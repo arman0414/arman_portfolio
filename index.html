@@ -3,73 +3,361 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Arman Malik — Software Engineer · Trust & Safety. Fraud detection, backend systems, data pipelines." />
+  <meta name="description" content="Arman Malik — Software Engineer · Trust & Safety. Fraud detection, backend systems, and LLM-powered investigation tools." />
   <title>Arman Malik · Software Engineer · Trust & Safety</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #FAF7F2;
-      --text: #1A1714;
-      --gold: #C9A84C;
-      --muted: #6B6355;
-      --border: rgba(201, 168, 76, 0.2);
-      --gold-soft: rgba(201, 168, 76, 0.35);
-      --gold-glow: rgba(201, 168, 76, 0.45);
-      --nav-bg: rgba(250, 247, 242, 0.72);
-      --nav-bg-scrolled: rgba(250, 247, 242, 0.92);
-      --font-display: "Cormorant Garamond", Georgia, serif;
-      --font-mono: "DM Mono", ui-monospace, monospace;
-      --font-bebas: "Bebas Neue", Impact, sans-serif;
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-      --header-h: 4.25rem;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 0.75rem); }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-mono); font-size: 0.9375rem; line-height: 1.65; overflow-x: hidden; cursor: none; }
-    @media (hover: none), (pointer: coarse) { body { cursor: auto; } }
-    body::after { content: ""; pointer-events: none; position: fixed; inset: 0; z-index: 9997; opacity: 0.055; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-    a { color: inherit; } img, svg { max-width: 100%; display: block; }
-    .cursor-dot, .cursor-ring { position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); border-radius: 50%; opacity: 0; transition: opacity 0.25s ease; }
-    .cursor-dot { width: 6px; height: 6px; background: var(--gold); mix-blend-mode: multiply; }
-    .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--gold-soft); transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.25s ease; }
-    body.cursor-ready .cursor-dot, body.cursor-ready .cursor-ring { opacity: 1; }
-    body.is-hover .cursor-ring { width: 48px; height: 48px; border-color: var(--gold); }
-    @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none !important; } body { cursor: auto; } }
-    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out); }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
-    .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
-    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.12s; }
-    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.19s; }
-    .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.26s; }
-    .reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) { .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; } .hero-ghost { animation: none !important; } .skill-bar-fill { transition: none !important; } }
-    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); display: flex; align-items: center; background: var(--nav-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: background 0.35s ease, box-shadow 0.35s ease; }
-    .site-header.is-scrolled { background: var(--nav-bg-scrolled); box-shadow: 0 8px 32px rgba(26, 23, 20, 0.06); }
-    .nav-inner { width: min(1200px, 100% - 2rem); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .logo { font-family: var(--font-bebas); font-size: 2rem; letter-spacing: 0.04em; text-decoration: none; color: var(--text); display: flex; align-items: baseline; gap: 0.15rem; }
-    .logo span { color: var(--gold); }
-    .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 0.5rem 0.65rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em; text-decoration: none; color: var(--muted); position: relative; padding-bottom: 0.2rem; transition: color 0.25s ease; }
-    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.35s var(--ease-out); }
-    .nav-links a:hover, .nav-links a.is-active { color: var(--text); }
-    .nav-links a:hover::after, .nav-links a.is-active::after { width: 100%; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; text-decoration: none; padding: 0.85rem 1.35rem; border-radius: 2px; border: 1px solid var(--gold); color: var(--text); background: transparent; position: relative; overflow: hidden; cursor: pointer; transition: color 0.35s ease 0.05s; }
-    .btn::before { content: ""; position: absolute; inset: 0; background: var(--gold); transform: translateX(-101%); transition: transform 0.45s var(--ease-out); z-index: -1; }
-    .btn:hover { color: var(--bg); } .btn:hover::before { transform: translateX(0); }
-    .btn--solid { background: var(--gold); color: var(--bg); border-color: var(--gold); }
-    .btn--solid::before { background: var(--text); } .btn--solid:hover { color: var(--bg); }
-    @media (max-width: 900px) { .nav-toggle { display: block; } .nav-links { position: fixed; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(250, 247, 242, 0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem 1.5rem; transform: translateY(-120%); opacity: 0; pointer-events: none; transition: transform 0.4s var(--ease-out), opacity 0.35s ease; } .site-header.nav-open .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; } .nav-links li { border-bottom: 1px solid var(--border); } .nav-links a { display: block; padding: 1rem 0; } .nav-links .btn-wrap { margin-top: 1rem; border: 0; } .nav-links .btn { width: 100%; } }
-    main > section { padding: clamp(4rem, 10vw, 7rem) 1.25rem; position: relative; scroll-margin-top: calc(var(--header-h) + 0.5rem); }
-    .container { width: min(1100px, 100%); margin: 0 auto; }
-    .section-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.28em; color: var(--gold); margin-bottom: 0.75rem; }
-    .section-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.25rem); margin: 0 0 2.5rem; line-height: 1.15; }
-    #hero { min-height: 100vh; min-height: 100dvh; padding-top: calc(var(--header-h) + 3rem); padding-bottom: 4rem; display: flex; align-items: center; }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="nav-inner">
+      <a class="logo" href="#hero">Arman<span>Malik</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+      <nav class="nav-links" id="primaryNav" aria-label="Primary">
+        <a href="#about" data-section="about">About</a>
+        <a href="#skills" data-section="skills">Skills</a>
+        <a href="#experience" data-section="experience">Experience</a>
+        <a href="#projects" data-section="projects">Projects</a>
+        <a href="#contact" data-section="contact">Contact</a>
+        <div class="nav-cta">
+          <a class="btn btn--solid btn--nav" href="#contact">Available for Opportunities</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" aria-label="Introduction">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge reveal">
+            <span class="dot" aria-hidden="true"></span>
+            Available for Opportunities
+          </div>
+          <h1 class="hero-name reveal">Arman Malik</h1>
+          <p class="hero-title-line reveal">Software Engineer · Trust &amp; Safety</p>
+          <p class="hero-bio reveal">Software Engineer with 3+ years across Trust &amp; Safety operations, abuse and scam investigation, and backend engineering for Google and Meta. Skilled in building fraud detection systems, real-time monitoring, and LLM-powered investigation tools using Python, SQL, and AWS.</p>
+          <p class="hero-keywords reveal">Trust &amp; Safety · Fraud Detection · Backend Engineering</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn--solid" href="#projects">View My Work</a>
+            <a class="btn btn--outline" href="Arman_Malik_Resume.pdf" download>Download Resume</a>
+          </div>
+          <div class="stats-grid reveal">
+            <div class="stat-card"><strong>3.5</strong><span>Years Experience</span></div>
+            <div class="stat-card"><strong>6+</strong><span>Projects Built</span></div>
+            <div class="stat-card"><strong>4</strong><span>Companies</span></div>
+            <div class="stat-card"><strong>2</strong><span>Degrees</span></div>
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <div class="avatar-wrap reveal">
+            <img class="avatar-photo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCAGQAZADASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAYBAgMEBQcICf/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/2gAMAwEAAhADEAAAAfqkAAAAAAAClOdRu8HyPwSHv0C8YzI9KisJ7ZL/AE3wD1KtupTFIptF5H51mh9GzX5O3z63v88n965VK3gAAAAAAAAAAAAAUK23aFWh8xb/AM9Unb5djXPasx2pv3NDPCSo7dWZV2YDSZz+y+R71YnnE6HTrpj+ifCI7V9s5PNvRtK5BeAkAAAAAAAAAAApWyFvgky+M6Tocu7FeitcszZW6+GK+9WaVrtS1r+/MaX83yy3jRfV3LJGiSx3FhROvqf4I+tIr6tW2u1aiQAAAAAAAAAClaDW2IplPz785S6HTGPe6Uhw6Y9kld3P1RDHLbomMb0j2q7R7od7tZb2z7lSKmcT4/ucSIVF/VOXTbwWz0Py71PIv9q8Sk2/J91Z+B37qi8AAAAAAAAAAAYPAvcvkHl18by8+czftbG5r+P71FVdLctueb3ZWSk7HT09nO2/PIHJb5SPDZljPLgvvraN+G/RnkPXx+Ub2tuev4n2N6J5H65M3DagAAAAAAAAAClbYcL4R+x/hrn00PT/AD70zl78+tmwcHrUutuWvza+1FsmfH1M7XZ97rRPJ6HdkF8Y31N7WtkupZz7ZIfLYvtz6V3rP39PM22iZAAAAAAAAAAAUbbnH4T1pfbVd1hZTeXzXEsWatz6xLdkfy68nl9FAcT38jrRfUlt8zoUcgn7+UFxFwHpzyF9TbYku2+qQsmgAAAAAAAAAClbi6PkfeW3WfZysFrWb8pc3tLciOb1uz8+9p+9xV6WV5Tf6r9Wr1vJLV51yS1I5H03t3JrqNv3y9ae7c7E8ZmQAAAAAAAAABq6Yt9X3nN2a1b1F9Vr7xq1rb3qLaf7+9nNPWm2s73HedNu+zvU5W8ct4mckpTr0pSvTlFQAAAAAAAAAAB//2Q==" alt="Arman Malik profile photo" width="240" height="240" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-label reveal">WHO I AM</p>
+        <h2 id="about-heading" class="section-title reveal">Engineering Trust &amp; Safety at Scale</h2>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>I'm a Software Engineer with 3+ years of combined experience across Trust &amp; Safety operations, abuse and scam investigation, and backend engineering — supporting global platforms including Google and Meta. I've conducted front-line abuse investigations, built the analytics infrastructure that helps T&amp;S teams work faster, and now engineer the detection systems and tools that protect users at scale.</p>
+            <p>My expertise spans fraud and abuse investigation, statistical analysis with SciPy and pandas, ML-based anomaly detection with scikit-learn, and backend engineering with Python, FastAPI, and AWS. I've recently built an LLM-powered investigation agent that automates fraud case triage using Hugging Face models and LangChain.</p>
+            <p>I thrive at the intersection of investigative instinct and engineering depth — building systems that are reliable, data-driven, and directly impact user safety.</p>
+            <p class="about-edu">M.S. Computer Science, University of Nevada, Reno (2024) · B.Tech Computer Science, Maharshi Dayanand University (2020)</p>
+          </div>
+          <div class="feature-cards">
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">🛡️</div>
+              <h3>Trust &amp; Safety</h3>
+              <p>Abuse investigation, scam/phishing detection, account takeover analysis, signal development, policy enforcement.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">📊</div>
+              <h3>Statistical Analysis &amp; ML</h3>
+              <p>SciPy, scikit-learn, hypothesis testing, anomaly detection, summary statistics, distribution analysis.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">⚡</div>
+              <h3>Backend &amp; Data Engineering</h3>
+              <p>FastAPI, Flask, REST APIs, ETL pipelines, real-time monitoring, AWS Lambda/SNS.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">🤖</div>
+              <h3>LLMs &amp; Generative AI</h3>
+              <p>LangChain, Hugging Face, OpenAI API, RAG, prompt engineering, investigation agents.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <p class="section-label reveal">CAPABILITIES</p>
+        <h2 id="skills-heading" class="section-title reveal">A Broad Toolkit Honed Across Trust &amp; Safety and Engineering</h2>
+        <p class="section-subtitle reveal">Deep expertise across fraud detection, statistical analysis, backend engineering, and cloud infrastructure.</p>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3>TRUST &amp; SAFETY</h3>
+            <div class="tag-list">
+              <span class="tag">Abuse Investigation</span>
+              <span class="tag">Scam/Phishing Detection</span>
+              <span class="tag">Account Takeover</span>
+              <span class="tag">Signal Development</span>
+              <span class="tag">Policy Enforcement</span>
+              <span class="tag">Incident Response</span>
+              <span class="tag">HTML/JS/URL Inspection</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>STATISTICAL ANALYSIS &amp; ML</h3>
+            <div class="tag-list">
+              <span class="tag">SciPy</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Hypothesis Testing</span>
+              <span class="tag">Summary Statistics</span>
+              <span class="tag">Anomaly Detection</span>
+              <span class="tag">Distribution Analysis</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">pandas</span>
+              <span class="tag">matplotlib</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>BACKEND &amp; APIs</h3>
+            <div class="tag-list">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Flask</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Data Pipelines</span>
+              <span class="tag">pytest</span>
+              <span class="tag">ETL</span>
+              <span class="tag">OpenCV</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>LLMs &amp; GENERATIVE AI</h3>
+            <div class="tag-list">
+              <span class="tag">LangChain</span>
+              <span class="tag">Hugging Face</span>
+              <span class="tag">OpenAI API</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">AI Agents</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>DATABASES</h3>
+            <div class="tag-list">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">MS SQL Server</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>CLOUD &amp; DEVOPS</h3>
+            <div class="tag-list">
+              <span class="tag">AWS EC2</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">SNS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Git</span>
+              <span class="tag">Linux</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>LANGUAGES &amp; TOOLS</h3>
+            <div class="tag-list">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Bash</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Splunk</span>
+              <span class="tag">Jupyter</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Power Query</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <p class="section-label reveal">EXPERIENCE</p>
+        <h2 id="experience-heading" class="section-title reveal">Where I've Contributed</h2>
+        <div class="timeline reveal">
+          <article class="timeline-item">
+            <h3 class="timeline-head">XProtean — Software Engineer</h3>
+            <p class="timeline-meta">Milpitas, CA · Mar 2025 – May 2025 · Jan 2026 – Mar 2026</p>
+            <ul>
+              <li>Architected a greenfield real-time monitoring system using Python and Raspberry Pi, achieving &lt;5-second alert latency for critical industrial sensor telemetry across 6+ sites.</li>
+              <li>Engineered scalable ETL pipelines for multi-source telemetry ingestion, processing 5,000+ records/day into SQL with robust validation and automated error-handling logic.</li>
+              <li>Built a resilient, event-driven alerting infrastructure on AWS (SNS, Lambda) with integrated batching and retry logic, eliminating manual monitoring and improving response times by 70%.</li>
+              <li>Designed modular backend architecture with user authentication, logging, and monitoring aligned to security best practices across distributed systems.</li>
+              <li>Optimized data ingestion performance and SQL query efficiency, ensuring stable sub-second data retrieval times even as telemetry volume scaled.</li>
+            </ul>
+          </article>
+          <article class="timeline-item">
+            <h3 class="timeline-head">Teleperformance — IT Business Analyst</h3>
+            <p class="timeline-meta">Remote · May 2025 – Jan 2026</p>
+            <ul>
+              <li>Acted as an operations and analytics enabler for Meta's Trust &amp; Safety teams, building data infrastructure, dashboards, and automated reporting that supported investigators and leadership across 10+ global production sites.</li>
+              <li>Designed automated workflows in SQL and Power Query to consolidate multi-source operational data, generate summary statistics and trend reports, and accelerate decision-making for risk and enforcement programs.</li>
+              <li>Developed DAX-based logic, multi-table data models, and a Global Data Validation Framework with automated auditing — eliminating ~70% of manual reporting effort and reducing cross-site inconsistencies by 65%.</li>
+              <li>Built Power BI dashboards providing real-time visibility into scam, abuse, and operational KPIs, partnering cross-functionally with global ops and engineering to identify workflow pain points and automate reporting pipelines.</li>
+            </ul>
+          </article>
+          <article class="timeline-item">
+            <h3 class="timeline-head">University of Nevada, Reno — Research Assistant</h3>
+            <p class="timeline-meta">Reno, NV · Aug 2024 – Dec 2024</p>
+            <ul>
+              <li>Developed Python/Flask backend services for an emergency-response application with real-time alerting, route planning, and automated escalation for 100+ simulated users.</li>
+              <li>Built ETL pipelines for real-time telemetry ingestion (3,000–5,000 records/day) with validation, feature extraction, and ML-based anomaly detection using scikit-learn.</li>
+              <li>Applied statistical analysis to telemetry data to identify trends, generate summary statistics, and improve detection accuracy of anomalous behavior.</li>
+              <li>Integrated backend APIs with React-based interfaces, shipping reliable, sub-second user-facing updates across web and mobile clients.</li>
+            </ul>
+          </article>
+          <article class="timeline-item">
+            <h3 class="timeline-head">Accenture — Associate Content Management</h3>
+            <p class="timeline-meta">India · Jan 2021 – Jul 2022</p>
+            <ul>
+              <li>Conducted front-line Trust &amp; Safety reviews for Google through hands-on case investigations on malicious ads, phishing sites, and brand-impersonation scams targeting users for credential theft and financial harm.</li>
+              <li>Inspected HTML, JavaScript, URLs, redirect chains, and landing-page behavior on suspect sites to identify abuse signals, applying Google's policies through internal review tools to triage, classify, and action violating domains.</li>
+              <li>Worked through high-volume review queues under strict accuracy and SLA targets, consistently meeting quality bars while handling complex and edge-case investigations.</li>
+              <li>Used SQL (SQLite) and Google's case-management tools to query case data, identify emerging abuse trends, and escalate patterns to Google's policy and engineering teams.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-label reveal">SELECTED WORK</p>
+        <h2 id="projects-heading" class="section-title reveal">Projects</h2>
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <h3>Intelligent Risk Signal Investigation Platform</h3>
+            <div class="project-badges">
+              <span>Python</span><span>scikit-learn</span><span>SciPy</span><span>LangChain</span><span>Hugging Face</span><span>FastAPI</span><span>Streamlit</span><span>PostgreSQL</span>
+            </div>
+            <p>End-to-end fraud detection system combining ML-based risk scoring (ROC-AUC 0.95), SciPy statistical validation, and an LLM-powered investigation agent that produces structured investigation summaries with recommended risk actions.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/Risk-Signal-Platform" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+          <article class="project-card reveal">
+            <h3>Real-Time Face Recognition System</h3>
+            <div class="project-badges">
+              <span>Python</span><span>OpenCV</span><span>Dlib</span><span>SQLite</span>
+            </div>
+            <p>Modular face-recognition pipeline with real-time 30 FPS interface. Achieved ~85% accuracy on face embeddings, improved recognition by 40%, reduced data retrieval by 55%.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/Face_Recognition" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+          <article class="project-card reveal">
+            <h3>AWS Real-Time Alerting &amp; Monitoring System</h3>
+            <div class="project-badges">
+              <span>Python</span><span>AWS SNS</span><span>Lambda</span><span>ETL</span><span>SQL</span>
+            </div>
+            <p>Event-driven alerting system with batching, validation, and retry logic. Processes 3,000–5,000 records/day with &lt;5-second alert latency across 5+ industrial sensors.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/aws-alerting-monitoring" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+          <article class="project-card reveal">
+            <h3>Emergency Evacuation App</h3>
+            <div class="project-badges">
+              <span>Python</span><span>Flask</span><span>React</span><span>PostgreSQL</span><span>ML</span>
+            </div>
+            <p>Full-stack evacuation platform with real-time tracking for 100+ users, automated alerts, and ML-based anomaly detection on live telemetry streams.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/emergency-evacuation-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+          <article class="project-card reveal">
+            <h3>Personalized Learning Analytics System</h3>
+            <div class="project-badges">
+              <span>Python</span><span>Flask</span><span>PostgreSQL</span><span>Power BI</span>
+            </div>
+            <p>RESTful analytics platform for student performance insights. Optimized schema and queries improved backend efficiency by 35%, boosted user engagement by 25%.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/learning-analytics-system" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+          <article class="project-card reveal">
+            <h3>SQLite Database Management System</h3>
+            <div class="project-badges">
+              <span>Python</span><span>SQLite</span><span>CSV</span><span>argparse</span><span>CLI</span>
+            </div>
+            <p>Modular CLI database engine with separate DDL/DML layers, CSV-backed CRUD, multi-table joins, SQL parsing, and an automated end-to-end test runner.</p>
+            <a class="btn btn--outline" href="https://github.com/arman0414/SQLite-Database-Management-in-Python" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="education-heading">
+      <div class="container">
+        <p class="section-label reveal">CREDENTIALS</p>
+        <h2 id="education-heading" class="section-title reveal">Education &amp; Certifications</h2>
+        <div class="edu-grid">
+          <div class="edu-card reveal">
+            <h3>M.S. Computer Science</h3>
+            <p>University of Nevada, Reno · Aug 2022 – Dec 2024</p>
+          </div>
+          <div class="edu-card reveal">
+            <h3>B.Tech Computer Science &amp; Engineering</h3>
+            <p>Maharshi Dayanand University, India · Aug 2016 – May 2020</p>
+          </div>
+        </div>
+        <div class="cert-row reveal">
+          <span class="cert-badge">IBM Full Stack Software Developer (Coursera)</span>
+          <span class="cert-badge">Python with Data Structures (Coding Blocks)</span>
+          <span class="cert-badge">Cloud Technology Consultant (AWS)</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" class="section-title reveal">Let's Build Something.</h2>
+        <p class="contact-lead reveal">Open to full-time roles, freelance projects, and collaborations.</p>
+        <div class="contact-cards">
+          <a class="contact-card reveal" href="mailto:armanmalikar@gmail.com">
+            <div class="icon" aria-hidden="true">📧</div>
+            <strong>Email</strong>
+            <span>armanmalikar@gmail.com</span>
+          </a>
+          <a class="contact-card reveal" href="tel:+16693369308">
+            <div class="icon" aria-hidden="true">📞</div>
+            <strong>Phone</strong>
+            <span>(669) 336-9308</span>
+          </a>
+          <a class="contact-card reveal" href="https://github.com/arman0414" target="_blank" rel="noopener noreferrer">
+            <div class="icon" aria-hidden="true">🔗</div>
+            <strong>GitHub</strong>
+            <span>github.com/arman0414</span>
+          </a>
+        </div>
+        <div class="contact-cta-wrap reveal">
+          <a class="btn btn--solid" href="Arman_Malik_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Designed &amp; Built by Arman Malik · 2025</p>
+    <div class="footer-social">
+      <a href="https://github.com/arman0414" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:armanmalikar@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
     .hero-canvas-wrap { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
     .hero-canvas-wrap canvas { width: 100%; height: 100%; display: block; opacity: 0.55; }
     .hero-ghost { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); font-family: var(--font-bebas); font-size: clamp(8rem, 28vw, 22rem); line-height: 0.85; color: rgba(26, 23, 20, 0.04); letter-spacing: 0.02em; user-select: none; z-index: 1; white-space: nowrap; animation: ghostPulse 8s ease-in-out infinite; }
